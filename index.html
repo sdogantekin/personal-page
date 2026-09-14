@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Serkan Dogantekin</title>
+<meta name="description" content="Serkan Dogantekin — product builder, Berlin.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a href="#about" class="brand">Serkan Dogantekin</a>
+  <nav class="nav" aria-label="Primary">
+    <a href="#about" data-nav="about" class="nav-link">About</a>
+    <a href="#resume" data-nav="resume" class="nav-link">Resume</a>
+    <a href="#projects" data-nav="projects" class="nav-link">Projects</a>
+    <a href="#writing" data-nav="writing" class="nav-link">Writing</a>
+    <a href="#contact" data-nav="contact" class="nav-link">Contact</a>
+  </nav>
+</header>
+
+<main class="main">
+
+  <section id="page-about" class="page">
+    <div class="hero">
+      <div class="eyebrow">Product Builder · Berlin</div>
+      <h1 class="hero-title">Hi, I'm Serkan.</h1>
+      <p class="hero-subtitle">Product builder. With ❤️ from Berlin, Germany.</p>
+    </div>
+    <p>I usually describe myself as a product person with engineering roots. I started my professional journey as a software engineer, grew into an engineering leadership role, and eventually moved into product management — where I get to bring both worlds together: technical judgment and product instinct.</p>
+    <p>Outside of my day job, I like building small things for fun. One of them is <a href="#projects">CV Butler</a>, a tool that scores a résumé against a job description and points out the gaps. I also write about product and engineering on <a href="#writing">Medium</a>.</p>
+    <p>Want the fuller story? Check out my <a href="#resume">resume</a>, or just <a href="#contact">say hi</a>.</p>
+  </section>
+
+  <section id="page-resume" class="page">
+    <h1 class="page-title">Resume</h1>
+    <p class="page-subtitle">An engineer's path into product, mostly in payments and fintech.</p>
+
+    <div class="timeline" id="timeline"></div>
+
+    <h2 class="section-title">Core capabilities</h2>
+    <div class="skill-groups" id="skill-groups"></div>
+
+    <a href="assets/Serkan_Dogantekin_Resume.pdf" download="Serkan_Dogantekin_Resume.pdf" class="btn btn-outline">Download résumé (PDF)</a>
+  </section>
+
+  <section id="page-projects" class="page">
+    <h1 class="page-title">Projects</h1>
+    <p class="page-subtitle">Things I've built on the side.</p>
+
+    <div class="project-grid">
+      <div>
+        <div class="project-heading">
+          <h2>CV Butler</h2>
+          <span class="badge">In progress</span>
+        </div>
+        <p>A small tool that scores your résumé against a job description — surfacing skill, experience, and education gaps so you know exactly what to fix before you apply.</p>
+        <p>Started as a weekend project to scratch my own itch during a job search; the demo card on the right is a real piece of its UI. Still under development — not live yet.</p>
+      </div>
+
+      <div class="demo-card">
+        <div class="demo-card-top">
+          <div class="demo-card-score">Match Score: 78/100</div>
+          <span class="badge badge-shrink">2 gaps</span>
+        </div>
+        <div class="demo-card-caption">Skills, Experience &amp; Education</div>
+        <div class="progress-track"><div class="progress-fill" style="width: 78%;"></div></div>
+        <p class="demo-card-note">Strong skills match. Missing Kubernetes experience.</p>
+        <span class="btn btn-outline btn-sm">View full report</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="project-grid">
+      <div>
+        <div class="project-heading">
+          <h2>Rabbit Hole</h2>
+          <span class="badge">In progress</span>
+        </div>
+        <p>A mobile app for discovering knowledge — swipe through bite-sized facts pulled from Wikipedia, Tinder-style, and follow whatever catches your interest down the rabbit hole.</p>
+        <p>Currently in development — not released yet.</p>
+        <div class="store-buttons">
+          <span class="btn btn-outline">Download on the App Store</span>
+          <span class="btn btn-outline">Get it on Google Play</span>
+        </div>
+      </div>
+
+      <div class="screenshot-placeholder">
+        <span>app screenshot</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="page-writing" class="page">
+    <h1 class="page-title">Writing</h1>
+    <p class="page-subtitle">Notes on product, engineering, and the space between.</p>
+    <p>I write on Medium when I have something worth saying — usually about the messy overlap between building things and deciding what's worth building.</p>
+
+    <div class="post-list">
+      <a href="https://sdogantekin.medium.com/bruce-lee-and-the-art-of-product-management-20f59bc83858" target="_blank" rel="noopener" class="post-link">
+        <div class="post-title">Bruce Lee and The Art of Product Management</div>
+        <div class="post-cta">Read on Medium →</div>
+      </a>
+      <a href="https://sdogantekin.medium.com/clones-parrots-and-puzzles-is-ais-thinking-still-an-illusion-69edeca6ba7e" target="_blank" rel="noopener" class="post-link">
+        <div class="post-title">Clones, Parrots and Puzzles: Is AI's Thinking Still an Illusion?</div>
+        <div class="post-cta">Read on Medium →</div>
+      </a>
+    </div>
+
+    <a href="https://sdogantekin.medium.com/" target="_blank" rel="noopener" class="btn btn-outline">See all posts on Medium →</a>
+
+    <h2 class="section-title" style="margin-top: 48px;">Book</h2>
+    <a href="https://bctr.org/dokumanlar/Blockchain101v2r2.pdf" target="_blank" rel="noopener" class="post-link">
+      <div class="post-title">Blockchain 101</div>
+      <div class="post-meta">Co-author, 1st edition May 2017 · 2nd edition May 2018</div>
+      <div class="post-cta">Read the free PDF →</div>
+    </a>
+  </section>
+
+  <section id="page-contact" class="page">
+    <h1 class="page-title">Contact</h1>
+    <p class="page-subtitle">Happy to hear from you.</p>
+    <div class="contact-grid">
+      <a href="mailto:serkan.dogantekin@gmail.com" class="contact-card">
+        <div class="contact-label">Email</div>
+        <div class="contact-value">serkan.dogantekin@gmail.com</div>
+      </a>
+      <a href="https://linkedin.com/in/serkandogantekin" target="_blank" rel="noopener" class="contact-card">
+        <div class="contact-label">LinkedIn</div>
+        <div class="contact-value">linkedin.com/in/serkandogantekin</div>
+      </a>
+      <a href="https://sdogantekin.medium.com/" target="_blank" rel="noopener" class="contact-card">
+        <div class="contact-label">Medium</div>
+        <div class="contact-value">sdogantekin.medium.com</div>
+      </a>
+      <a href="https://github.com/sdogantekin" target="_blank" rel="noopener" class="contact-card">
+        <div class="contact-label">GitHub</div>
+        <div class="contact-value">github.com/sdogantekin</div>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-row">
+    <span>© 2026 Serkan Dogantekin</span>
+    <button type="button" id="game-toggle" class="link-button">psst, bored? try a tiny game →</button>
+  </div>
+
+  <div id="game-wrap" class="game-wrap" hidden>
+    <div id="game-area" class="game-area">
+      <div class="game-sun"></div>
+      <div id="cloud1" class="game-cloud game-cloud-1"></div>
+      <div id="cloud2" class="game-cloud game-cloud-2"></div>
+      <div id="game-obstacles"></div>
+      <div id="game-ground" class="game-ground"></div>
+      <div id="ball-shadow" class="ball-shadow"></div>
+      <div id="ball" class="ball"></div>
+      <div id="game-score" class="game-score">0</div>
+      <div id="game-overlay" class="game-overlay" hidden></div>
+    </div>
+    <div class="game-hint" id="game-hint"></div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
