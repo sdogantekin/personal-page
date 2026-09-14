@@ -484,7 +484,7 @@ a:hover { color: var(--accent-hover); }
   position: relative;
   width: 100%;
   height: 140px;
-  background: linear-gradient(180deg, oklch(94% 0.02 85), oklch(97% 0.01 85));
+  background: linear-gradient(180deg, oklch(80% 0.07 240), oklch(90% 0.035 240));
   border: 1px solid var(--border);
   border-radius: 8px;
   overflow: hidden;
@@ -505,10 +505,10 @@ a:hover { color: var(--accent-hover); }
 .game-cloud {
   position: absolute;
   border-radius: 10px;
-  background: oklch(97% 0.01 240 / 0.8);
+  background: oklch(99% 0.005 240 / 0.95);
 }
 .game-cloud-1 { top: 18px; width: 34px; height: 16px; left: 40px; }
-.game-cloud-2 { top: 34px; width: 26px; height: 12px; background: oklch(97% 0.01 240 / 0.65); left: 200px; }
+.game-cloud-2 { top: 34px; width: 26px; height: 12px; background: oklch(99% 0.005 240 / 0.8); left: 200px; }
 
 .game-ground {
   position: absolute;
