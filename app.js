@@ -19,9 +19,33 @@
     { group: 'Tools & Technologies', skills: ['Analytics Platforms', 'Collaboration Tools', 'AI/ML Integration', 'API Design & Development'] },
   ];
 
+  /* ---------- Analytics ---------- */
+
+  const PAGE_TITLES = {
+    about: 'About', resume: 'Resume', projects: 'Projects', writing: 'Writing', contact: 'Contact',
+  };
+
+  function gaEvent(name, params) {
+    if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
+  }
+
+  function trackSectionView(page) {
+    gaEvent('page_view', {
+      page_title: `${PAGE_TITLES[page]} — Serkan Dogantekin`,
+      page_location: window.location.href,
+      page_path: `/#${page}`,
+    });
+  }
+
+  document.addEventListener('click', (e) => {
+    const el = e.target.closest('[data-ga]');
+    if (el) gaEvent(el.dataset.ga);
+  });
+
   /* ---------- Router ---------- */
 
   const VALID_PAGES = ['about', 'resume', 'projects', 'writing', 'contact'];
+  let routeTrackingReady = false;
 
   function applyRoute() {
     const hash = (window.location.hash || '#about').replace('#', '');
@@ -33,6 +57,8 @@
       el.classList.toggle('active', el.dataset.nav === page);
     });
     if (game.playing || game.showing) closeGame();
+    if (routeTrackingReady) trackSectionView(page);
+    routeTrackingReady = true;
   }
 
   window.addEventListener('hashchange', applyRoute);
@@ -329,6 +355,7 @@
     game.playing = true;
     renderGame();
     game.timer = setInterval(step, 30);
+    gaEvent('footer_game_start');
   }
 
   function pressJump() {
@@ -359,6 +386,7 @@
     resetGameState();
     gameEls.wrap.hidden = false;
     renderGame();
+    gaEvent('footer_game_open');
   }
 
   gameEls.toggle.addEventListener('click', () => {
