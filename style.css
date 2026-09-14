@@ -510,6 +510,28 @@ a:hover { color: var(--accent-hover); }
 .game-cloud-1 { top: 18px; width: 34px; height: 16px; left: 40px; }
 .game-cloud-2 { top: 34px; width: 26px; height: 12px; background: oklch(99% 0.005 240 / 0.8); left: 200px; }
 
+.mesa-layer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 12px;
+  background-repeat: repeat-x;
+  background-position: 0 bottom;
+  pointer-events: none;
+}
+
+.mesa-far {
+  height: 34px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0,0,220,34'%3E%3Cpath d='M0,34L26,34Q50,10,74,34L220,34Z' fill='rgba(185,145,118,0.4)'/%3E%3C/svg%3E");
+  background-size: 220px 34px;
+}
+
+.mesa-near {
+  height: 50px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0,0,320,50'%3E%3Cpath d='M0,50L18,50Q36,20,54,50L140,50Q168,8,196,50L320,50Z' fill='rgba(158,105,78,0.55)'/%3E%3C/svg%3E");
+  background-size: 320px 50px;
+}
+
 .game-ground {
   position: absolute;
   left: 0; right: 0; bottom: 0;

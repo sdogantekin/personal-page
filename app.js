@@ -126,6 +126,8 @@
 
   const AREA_H = 140, GROUND_H = 12, BALL_D = 26, BALL_LEFT = 22;
   const GRAVITY = 0.75, OBS_SPEED = 2.8;
+  const MESA_FAR_SPEED = 0.12, MESA_FAR_TILE = 220;
+  const MESA_NEAR_SPEED = 0.3, MESA_NEAR_TILE = 320;
   const ARROW_HEAD_W = 10, ARROW_TAIL_W = 20, ARROW_W = ARROW_HEAD_W + ARROW_TAIL_W, ARROW_H = 10;
   const ARROW_LOW_LIFT = 52, ARROW_HIGH_LIFT = 92;
   const MIN_JUMP = 11, MAX_HOLD = 320;
@@ -145,6 +147,8 @@
     overlay: document.getElementById('game-overlay'),
     cloud1: document.getElementById('cloud1'),
     cloud2: document.getElementById('cloud2'),
+    mesaFar: document.getElementById('mesa-far'),
+    mesaNear: document.getElementById('mesa-near'),
     hint: document.getElementById('game-hint'),
   };
 
@@ -153,6 +157,7 @@
     timer: null, chargeStart: 0,
     lift: 0, liftVel: 0, score: 0, ticks: 0,
     cloud1X: 40, cloud2X: 200, groundOffset: 0,
+    mesaFarX: 0, mesaNearX: 0,
     squashX: 1, squashY: 1, spin: 0,
     obstacles: [],
   };
@@ -183,7 +188,7 @@
     game.score = 0;
     game.lift = 0;
     game.liftVel = 0;
-    game.obstacles = [{ x: 300, type: 'cactus', w: 14, h: 30, branches: [] }];
+    game.obstacles = [{ x: 300, type: 'cactus', w: 14, h: 30, branches: randomBranches() }];
     game.ticks = 0;
     game.squashX = 1;
     game.squashY = 1;
@@ -210,6 +215,8 @@
 
     gameEls.cloud1.style.left = game.cloud1X + 'px';
     gameEls.cloud2.style.left = game.cloud2X + 'px';
+    gameEls.mesaFar.style.backgroundPositionX = game.mesaFarX + 'px';
+    gameEls.mesaNear.style.backgroundPositionX = game.mesaNearX + 'px';
     gameEls.ground.style.backgroundPositionX = game.groundOffset + 'px';
 
     const ballTop = GROUND_Y - BALL_D * game.squashY - game.lift;
@@ -273,6 +280,8 @@
     game.cloud1X -= 0.35; if (game.cloud1X < -40) game.cloud1X = areaW + 20;
     game.cloud2X -= 0.22; if (game.cloud2X < -40) game.cloud2X = areaW + 50;
     game.groundOffset = (game.groundOffset - OBS_SPEED) % 22;
+    game.mesaFarX = (game.mesaFarX - MESA_FAR_SPEED) % MESA_FAR_TILE;
+    game.mesaNearX = (game.mesaNearX - MESA_NEAR_SPEED) % MESA_NEAR_TILE;
     game.spin = (game.spin + (game.lift === 0 ? OBS_SPEED * 6 : OBS_SPEED * 3)) % 360;
 
     let targetSX = 1, targetSY = 1;
