@@ -170,6 +170,7 @@
     ballShadow: document.getElementById('ball-shadow'),
     ball: document.getElementById('ball'),
     score: document.getElementById('game-score'),
+    best: document.getElementById('game-best'),
     overlay: document.getElementById('game-overlay'),
     cloud1: document.getElementById('cloud1'),
     cloud2: document.getElementById('cloud2'),
@@ -178,10 +179,30 @@
     hint: document.getElementById('game-hint'),
   };
 
+  const HIGH_SCORE_KEY = 'serkandogantekin_game_highscore';
+
+  function loadHighScore() {
+    try {
+      const stored = parseInt(window.localStorage.getItem(HIGH_SCORE_KEY), 10);
+      return Number.isFinite(stored) && stored > 0 ? stored : 0;
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  function saveHighScore(value) {
+    try {
+      window.localStorage.setItem(HIGH_SCORE_KEY, String(value));
+    } catch (e) {
+      /* localStorage unavailable (private mode, disabled storage, etc.) — ignore */
+    }
+  }
+
   const game = {
     showing: false, playing: false, gameOver: false, charging: false,
     timer: null, chargeStart: 0,
     lift: 0, liftVel: 0, score: 0, ticks: 0,
+    highScore: loadHighScore(), isNewHighScore: false,
     cloud1X: 40, cloud2X: 200, groundOffset: 0,
     mesaFarX: 0, mesaNearX: 0,
     squashX: 1, squashY: 1, spin: 0,
@@ -212,6 +233,7 @@
     game.playing = false;
     game.gameOver = false;
     game.score = 0;
+    game.isNewHighScore = false;
     game.lift = 0;
     game.liftVel = 0;
     game.obstacles = [{ x: 300, type: 'cactus', w: 14, h: 30, branches: randomBranches() }];
@@ -222,8 +244,18 @@
 
   function renderGame() {
     gameEls.score.textContent = game.score;
+    gameEls.best.textContent = game.highScore > 0 ? `best ${game.highScore}` : '';
     gameEls.overlay.hidden = !game.gameOver;
-    gameEls.overlay.textContent = game.gameOver ? `Score: ${game.score} — tap to retry` : '';
+    if (game.gameOver) {
+      const status = game.isNewHighScore
+        ? 'new high score!'
+        : game.highScore > 0
+          ? `best: ${game.highScore}`
+          : '';
+      gameEls.overlay.textContent = `Score: ${game.score}${status ? ' — ' + status : ''} — tap to retry`;
+    } else {
+      gameEls.overlay.textContent = '';
+    }
 
     gameEls.hint.innerHTML = '';
     if (game.playing) {
@@ -343,6 +375,12 @@
       game.gameOver = true;
       game.lift = 0;
       game.liftVel = 0;
+      if (game.score > game.highScore) {
+        game.highScore = game.score;
+        game.isNewHighScore = true;
+        saveHighScore(game.highScore);
+        gaEvent('footer_game_high_score', { value: game.highScore });
+      }
       renderGame();
       return;
     }

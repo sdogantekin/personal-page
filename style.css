@@ -594,6 +594,16 @@ a:hover { color: var(--accent-hover); }
   font-family: monospace;
 }
 
+.game-best {
+  position: absolute;
+  top: 24px;
+  right: 10px;
+  font-size: 10px;
+  font-weight: 500;
+  color: oklch(25% 0.02 85 / 0.65);
+  font-family: monospace;
+}
+
 .game-overlay {
   position: absolute;
   inset: 0;
