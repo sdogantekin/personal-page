@@ -376,17 +376,17 @@ a:hover { color: var(--accent-hover); }
   gap: 12px;
   flex-wrap: wrap;
 }
-.store-buttons .btn { height: 36px; }
+.store-buttons .btn { height: 36px; min-width: 200px; }
 
 .screenshot-row {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 18px;
   flex-wrap: wrap;
 }
 
 .screenshot {
-  width: 100px;
+  width: 130px;
   aspect-ratio: 9 / 19;
   object-fit: cover;
   border: 1px solid var(--border);
