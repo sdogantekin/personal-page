@@ -378,24 +378,20 @@ a:hover { color: var(--accent-hover); }
 }
 .store-buttons .btn { height: 36px; }
 
-.screenshot-placeholder {
-  width: 100%;
-  max-width: 200px;
-  aspect-ratio: 9 / 16;
-  margin: 0 auto;
-  background-image: repeating-linear-gradient(135deg, oklch(94% 0.01 75) 0px, oklch(94% 0.01 75) 8px, oklch(97% 0.006 75) 8px, oklch(97% 0.006 75) 16px);
+.screenshot-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.screenshot {
+  width: 100px;
+  aspect-ratio: 9 / 19;
+  object-fit: cover;
   border: 1px solid var(--border);
   border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.screenshot-placeholder span {
-  font-family: monospace;
-  font-size: 11px;
-  color: var(--fg-muted);
-  text-align: center;
-  padding: 0 16px;
+  background: var(--card-bg);
 }
 
 /* Writing */
