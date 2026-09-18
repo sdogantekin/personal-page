@@ -376,23 +376,28 @@ a:hover { color: var(--accent-hover); }
   gap: 12px;
   flex-wrap: wrap;
 }
-.store-buttons .btn { height: 36px; min-width: 200px; }
+.store-buttons .btn { height: 36px; width: 230px; }
 
-.screenshot-row {
-  display: flex;
-  justify-content: center;
-  gap: 18px;
-  flex-wrap: wrap;
+.screenshot-stack {
+  position: relative;
+  width: 260px;
+  height: 410px;
+  margin: 0 auto;
 }
 
 .screenshot {
-  width: 130px;
+  position: absolute;
   aspect-ratio: 9 / 19;
   object-fit: cover;
   border: 1px solid var(--border);
   border-radius: 16px;
   background: var(--card-bg);
+  box-shadow: 0 10px 24px oklch(20% 0.02 85 / 0.16);
 }
+
+.screenshot-1 { top: 0; left: 0; width: 130px; z-index: 1; }
+.screenshot-2 { top: 42px; left: 55px; width: 138px; z-index: 2; }
+.screenshot-3 { top: 84px; left: 110px; width: 150px; z-index: 3; }
 
 /* Writing */
 
