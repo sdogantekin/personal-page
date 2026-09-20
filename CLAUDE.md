@@ -33,7 +33,7 @@ The design originates from a Claude Design canvas project ("Personal Website Des
 ## Deployment
 
 - **Live at:** https://serkandogantekin.com
-- **Hosting:** Vercel, project `personal-page` under the `yoshi-f34b` team (same team as `cv-butler` and `quiz-project`). Domain DNS is proxied through Cloudflare in front of Vercel.
+- **Hosting:** Vercel, project `personal-page` under the `yoshi-f34b` team (same team as `cv-butler` and `quiz-project`). DNS is managed directly at the registrar, Porkbun (nameservers `*.ns.porkbun.com`) — not Cloudflare. Apex (`serkandogantekin.com`) is an A record to Vercel; `www` is a CNAME to Vercel's per-domain target (added 2026-09-20 to fix a stale Porkbun URL-forwarding record that was 404ing and blocking Google indexing).
 - **GitHub:** `sdogantekin/personal-page` (public). Vercel is not connected to auto-deploy on push — `vercel git connect` previously failed silently; deploys are manual.
 - **To deploy:** after pushing to `main`, run `npx --yes vercel deploy --prod --yes` from the repo root (already linked via `.vercel/project.json`). Occasionally fails with a transient "Not authorized" right after the CLI auto-updates mid-command — just retry, it's not a real auth problem (confirmed via `vercel whoami` / `vercel project ls`).
 - **Analytics:** GA4 (`G-P1Z1BTKGMQ`), inline `gtag.js` snippet in `index.html`. Custom events (defined in `app.js`): `page_view` on section navigation, `resume_download`, `cv_butler_try`/`cv_butler_github`, `contact_email`/`contact_linkedin`/`contact_medium`/`contact_github`, `footer_game_open`/`footer_game_start`/`footer_game_high_score`. Wired via `data-ga` attributes + one delegated click listener, plus explicit calls at the game/router call sites.
