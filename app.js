@@ -19,6 +19,12 @@
     { group: 'Tools & Technologies', skills: ['Analytics Platforms', 'Collaboration Tools', 'AI/ML Integration', 'API Design & Development'] },
   ];
 
+  const educationData = [
+    { degree: 'Executive MBA', org: 'Boğaziçi University' },
+    { degree: 'MSc, Information Technologies', org: 'Middle East Technical University' },
+    { degree: 'BSc, Computer Engineering', org: 'Middle East Technical University' },
+  ];
+
   /* ---------- Analytics ---------- */
 
   const PAGE_TITLES = {
@@ -145,6 +151,19 @@
       });
       wrap.append(title, pills);
       root.appendChild(wrap);
+    });
+  }
+
+  function renderEducation() {
+    const root = document.getElementById('education-list');
+    educationData.forEach((item) => {
+      const row = document.createElement('div');
+      row.className = 'education-item';
+      row.innerHTML = `
+        <div class="education-degree">${item.degree}</div>
+        <div class="education-org">${item.org}</div>
+      `;
+      root.appendChild(row);
     });
   }
 
@@ -472,6 +491,7 @@
 
   renderTimeline();
   renderSkillGroups();
+  renderEducation();
   resetGameState();
   renderGame();
   applyRoute();

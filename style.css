@@ -288,6 +288,32 @@ a:hover { color: var(--accent-hover); }
 
 .skill-groups { margin-bottom: 40px; }
 
+/* Resume: education */
+
+.education-list { margin-bottom: 40px; }
+
+.education-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.education-item:last-child { border-bottom: none; }
+
+.education-degree {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.education-org {
+  font-size: 14px;
+  color: var(--fg-muted);
+  text-align: right;
+}
+
 /* Projects */
 
 .project-grid {
