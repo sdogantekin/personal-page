@@ -425,6 +425,14 @@ a:hover { color: var(--accent-hover); }
 .screenshot-2 { top: 42px; left: 55px; width: 138px; z-index: 2; }
 .screenshot-3 { top: 84px; left: 110px; width: 150px; z-index: 3; }
 
+.screenshot-wide {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px oklch(20% 0.02 85 / 0.16);
+}
+.screenshot-wide img { display: block; width: 100%; height: auto; }
+
 /* Writing */
 
 .post-list { margin-bottom: 28px; }
