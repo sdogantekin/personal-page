@@ -54,7 +54,8 @@
   let routeTrackingReady = false;
 
   function applyRoute() {
-    const hash = (window.location.hash || '#about').replace('#', '');
+    const raw = (window.location.hash || '#about').replace('#', '');
+    const [hash, anchor] = raw.split('/');
     const page = VALID_PAGES.includes(hash) ? hash : 'about';
     document.querySelectorAll('.page').forEach((el) => {
       el.classList.toggle('active', el.id === `page-${page}`);
@@ -65,6 +66,12 @@
     if (game.playing || game.showing) closeGame();
     if (routeTrackingReady) trackSectionView(page);
     routeTrackingReady = true;
+    if (anchor) {
+      requestAnimationFrame(() => {
+        const target = document.getElementById(anchor);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
   }
 
   window.addEventListener('hashchange', applyRoute);
