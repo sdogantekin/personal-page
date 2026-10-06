@@ -165,11 +165,11 @@ a:hover { color: var(--accent-hover); }
   margin-bottom: 32px;
 }
 
-.resume-expand-all {
+.link-button.resume-expand-all {
   color: var(--accent);
   font-weight: 500;
 }
-.resume-expand-all:hover { color: var(--accent-hover); }
+.link-button.resume-expand-all:hover { color: var(--accent-hover); }
 
 .timeline { margin-bottom: 40px; }
 
