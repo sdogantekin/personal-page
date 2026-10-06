@@ -28,7 +28,7 @@
   /* ---------- Analytics ---------- */
 
   const PAGE_TITLES = {
-    about: 'About', resume: 'Resume', projects: 'Projects', writing: 'Writing', contact: 'Contact',
+    about: 'About', resume: 'Resume', projects: 'Side Projects', writing: 'Writing', contact: 'Contact',
   };
 
   function gaEvent(name, params) {
