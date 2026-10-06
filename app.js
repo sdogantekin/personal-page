@@ -5,7 +5,7 @@
 
   const timelineData = [
     { role: 'Lead Product Manager', org: 'Distribusion Technologies, Berlin', period: 'Sep 2025 — Sep 2026', desc: 'Leading global payments strategy and execution for a B2B transportation platform processing €140M/year across 15+ markets.', metrics: [{ value: '€140M', label: 'annual volume' }, { value: '15+', label: 'markets' }, { value: '3', label: 'new markets' }, { value: '22%', label: 'Mexico acceptance rate ↑' }, { value: '60%', label: 'expected volume growth' }] },
-    { role: 'Senior Product Manager', org: 'Revolut, Berlin', period: 'Jun 2025 — Sep 2025', desc: "Led FinCrime's due diligence domain, balancing regulatory compliance with user experience across markets.", metrics: [{ value: '12%', label: 'fewer repeat submissions' }] },
+    { role: 'Senior Product Manager', org: 'Revolut, Berlin', period: 'Jun 2025 — Sep 2025', desc: "Led FinCrime's due diligence domain, balancing regulatory compliance with user experience across markets.", metrics: null },
     { role: 'Head of Product', org: 'Getir, Berlin', period: 'Aug 2021 — Oct 2024', desc: 'Led payments and cross-domain product strategy across 9 countries, processing 500K daily transactions.', metrics: [{ value: '9', label: 'countries' }, { value: '500K', label: 'daily transactions' }, { value: '40%', label: 'chargeback reduction' }, { value: '€600K', label: 'fraud savings/yr' }, { value: '80%', label: 'marketing conversion lift' }, { value: '€900K', label: 'opex savings/yr' }, { value: '+175%', label: 'ad revenue growth' }] },
     { role: 'Senior Product Manager', org: 'Delivery Hero, Berlin', period: 'Jul 2020 — Aug 2021', desc: "Built reusable fintech products across Delivery Hero's platform countries for users, riders, and merchants.", metrics: [{ value: 'YemekPay', label: 'foundation for Turkey e-money license' }] },
     { role: 'Senior Product Manager', org: 'Finleap, Berlin', period: 'Aug 2018 — Jul 2020', desc: 'Built PSD2-based open finance API platforms: account aggregation, financial timelines, payment initiation.', metrics: null },
@@ -28,7 +28,7 @@
   /* ---------- Analytics ---------- */
 
   const PAGE_TITLES = {
-    about: 'About', resume: 'Resume', projects: 'Side Projects', writing: 'Writing', contact: 'Contact',
+    about: 'About', experience: 'Experience', projects: 'Side Projects', writing: 'Writing', contact: 'Contact',
   };
 
   function gaEvent(name, params) {
@@ -50,7 +50,7 @@
 
   /* ---------- Router ---------- */
 
-  const VALID_PAGES = ['about', 'resume', 'projects', 'writing', 'contact'];
+  const VALID_PAGES = ['about', 'experience', 'projects', 'writing', 'contact'];
   let routeTrackingReady = false;
 
   function applyRoute() {
@@ -76,11 +76,17 @@
 
   window.addEventListener('hashchange', applyRoute);
 
-  /* ---------- Resume: timeline & skills ---------- */
+  /* ---------- Experience: timeline & skills ---------- */
 
   function renderTimeline() {
     const root = document.getElementById('timeline');
-    let selectedIdx = -1;
+    const expandAllBtn = document.getElementById('resume-expand-all');
+    const expanded = new Set([0]);
+
+    function updateExpandAllLabel() {
+      if (!expandAllBtn) return;
+      expandAllBtn.textContent = expanded.size === timelineData.length ? 'Collapse all' : 'Expand all';
+    }
 
     const items = timelineData.map((item, i) => {
       const wrap = document.createElement('div');
@@ -129,15 +135,31 @@
         body.appendChild(metrics);
       }
 
+      if (expanded.has(i)) wrap.classList.add('selected');
+
       body.addEventListener('click', () => {
-        selectedIdx = selectedIdx === i ? -1 : i;
-        items.forEach((el, j) => el.classList.toggle('selected', j === selectedIdx));
+        if (expanded.has(i)) expanded.delete(i); else expanded.add(i);
+        wrap.classList.toggle('selected', expanded.has(i));
+        updateExpandAllLabel();
       });
 
       wrap.append(rail, body);
       root.appendChild(wrap);
       return wrap;
     });
+
+    updateExpandAllLabel();
+
+    if (expandAllBtn) {
+      expandAllBtn.addEventListener('click', () => {
+        const expandAll = expanded.size !== timelineData.length;
+        items.forEach((el, i) => {
+          if (expandAll) expanded.add(i); else expanded.delete(i);
+          el.classList.toggle('selected', expandAll);
+        });
+        updateExpandAllLabel();
+      });
+    }
   }
 
   function renderSkillGroups() {

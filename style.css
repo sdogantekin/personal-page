@@ -155,7 +155,21 @@ a:hover { color: var(--accent-hover); }
 }
 .btn-disabled:hover { background: transparent; }
 
-/* Resume: timeline */
+/* Experience: timeline */
+
+.resume-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.resume-expand-all {
+  color: var(--accent);
+  font-weight: 500;
+}
+.resume-expand-all:hover { color: var(--accent-hover); }
 
 .timeline { margin-bottom: 40px; }
 
@@ -271,7 +285,7 @@ a:hover { color: var(--accent-hover); }
   color: var(--fg-muted);
 }
 
-/* Resume: skills */
+/* Experience: skills */
 
 .skill-group { margin-bottom: 20px; }
 
@@ -301,7 +315,7 @@ a:hover { color: var(--accent-hover); }
 
 .skill-groups { margin-bottom: 40px; }
 
-/* Resume: education */
+/* Experience: education */
 
 .education-list { margin-bottom: 40px; }
 
