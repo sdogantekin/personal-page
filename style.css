@@ -460,24 +460,7 @@ a:hover { color: var(--accent-hover); }
 }
 .screenshot-wide img { display: block; width: 100%; height: auto; }
 
-.screenshot-trio {
-  display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  grid-template-rows: auto auto;
-  gap: 10px;
-  max-width: 320px;
-  margin: 0 auto;
-  align-items: start;
-}
-.screenshot-trio img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  box-shadow: 0 10px 24px oklch(20% 0.02 85 / 0.16);
-}
-.screenshot-trio .trio-game { grid-row: 1 / span 2; }
+.screenshot.shot-top { object-position: top; }
 
 /* Writing */
 
