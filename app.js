@@ -48,6 +48,41 @@
     if (el) gaEvent(el.dataset.ga);
   });
 
+  /* ---------- Screenshot lightbox (mobile) ---------- */
+
+  const mobileMq = window.matchMedia('(max-width: 480px)');
+  let lightbox = null;
+
+  function closeLightbox() {
+    if (lightbox) lightbox.hidden = true;
+    document.body.classList.remove('lightbox-open');
+  }
+
+  function openLightbox(src, alt) {
+    if (!lightbox) {
+      lightbox = document.createElement('div');
+      lightbox.className = 'lightbox';
+      lightbox.setAttribute('role', 'dialog');
+      lightbox.setAttribute('aria-modal', 'true');
+      lightbox.innerHTML = '<button class="lightbox-close" type="button" aria-label="Close">×</button><img alt="">';
+      lightbox.addEventListener('click', closeLightbox);
+      document.body.appendChild(lightbox);
+    }
+    const img = lightbox.querySelector('img');
+    img.src = src;
+    img.alt = alt;
+    lightbox.hidden = false;
+    document.body.classList.add('lightbox-open');
+  }
+
+  document.addEventListener('click', (e) => {
+    const img = e.target.closest('.screenshot-stack img');
+    if (img && mobileMq.matches) openLightbox(img.currentSrc || img.src, img.alt);
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+  window.addEventListener('hashchange', closeLightbox);
+  mobileMq.addEventListener('change', closeLightbox);
+
   /* ---------- Router ---------- */
 
   const VALID_PAGES = ['about', 'experience', 'projects', 'writing', 'contact'];
