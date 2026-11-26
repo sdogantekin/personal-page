@@ -700,4 +700,18 @@ a:hover { color: var(--accent-hover); }
 @media (max-width: 480px) {
   .site-header { padding: 16px 20px; }
   .hero-title { font-size: 34px; }
+
+  .screenshot-stack {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    height: auto;
+  }
+  .screenshot {
+    position: static;
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
+    border-radius: 12px;
+  }
 }
