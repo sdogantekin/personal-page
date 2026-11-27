@@ -48,9 +48,8 @@
     if (el) gaEvent(el.dataset.ga);
   });
 
-  /* ---------- Screenshot lightbox (mobile) ---------- */
+  /* ---------- Screenshot lightbox ---------- */
 
-  const mobileMq = window.matchMedia('(max-width: 480px)');
   let lightbox = null;
 
   function closeLightbox() {
@@ -77,11 +76,10 @@
 
   document.addEventListener('click', (e) => {
     const img = e.target.closest('.screenshot-stack img');
-    if (img && mobileMq.matches) openLightbox(img.currentSrc || img.src, img.alt);
+    if (img) openLightbox(img.currentSrc || img.src, img.alt);
   });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
   window.addEventListener('hashchange', closeLightbox);
-  mobileMq.addEventListener('change', closeLightbox);
 
   /* ---------- Router ---------- */
 
